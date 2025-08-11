@@ -1,4 +1,4 @@
-package com.java.Atomicity;
+package com.java.AtomicClasses;
 
 import java.util.ArrayList;
 import java.util.Collections;
