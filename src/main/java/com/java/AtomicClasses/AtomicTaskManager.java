@@ -30,11 +30,18 @@ public class AtomicTaskManager {
     }
 
     /**
-     * Retrieves a task by index in a thread-safe way.
-     * @param index The task index
-     * @return The task string
-     * @throws IndexOutOfBoundsException if index is invalid
+     * Retrieves a task by its index in a thread-safe manner.
+     * <p>
+     * Synchronization is not required because the {@link AtomicReference} always
+     * holds an immutable snapshot of the task list — each modification replaces
+     * the reference with a new list instance.
+     * </p>
+     *
+     * @param index the index of the task to retrieve
+     * @return the task string at the specified index
+     * @throws IndexOutOfBoundsException if the index is out of range
      */
+
     public String getTask(int index) {
         List<String> snapshot = tasks.get();
         if (index < 0 || index >= snapshot.size()) {
